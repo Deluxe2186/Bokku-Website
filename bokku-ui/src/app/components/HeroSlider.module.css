@@ -1,12 +1,8 @@
 .slider {
   position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-  min-height: 22rem;
+  width: 100%;
+  overflow: visible;
 }
-
-@media (min-width: 640px) { .slider { min-height: 26rem; } }
-@media (min-width: 1024px) { .slider { min-height: 30rem; } }
 
 .slide {
   position: absolute;
@@ -14,50 +10,73 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s ease;
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .slide { grid-template-columns: 1fr 1fr; padding: 2.5rem 3rem; }
+  overflow: visible;
 }
 
 .slideActive {
   opacity: 1;
   visibility: visible;
   position: relative;
+  padding-bottom: 2.5rem;
 }
 
-/* Sample brand-color utility classes for slide backgrounds */
-.bgSoftBlue { background: #E7ECFF; }
-.bgSoftYellow { background: #FFF6D9; }
-.bgSoftGreen { background: #E4F7EA; }
+@media (min-width: 768px) {
+  .slideActive { padding-bottom: 4.5rem; }
+}
+
+/* Full-bleed diagonal two-tone backgrounds, unique per slide */
+.bgSoftBlue { background: linear-gradient(120deg, #E7ECFF 55%, var(--background) 55.5%); }
+.bgSoftYellow { background: linear-gradient(120deg, #FFF6D9 55%, var(--background) 55.5%); }
+.bgSoftGreen { background: linear-gradient(120deg, #E4F7EA 55%, var(--background) 55.5%); }
+
+.inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  min-height: 26rem;
+  padding: 3rem 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    min-height: 34rem;
+    padding: 0 2rem;
+  }
+}
 
 .textCol {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  order: 2;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 2.5rem;
 }
 
-@media (min-width: 768px) { .textCol { order: 1; } }
+@media (min-width: 768px) { .textCol { padding-bottom: 0; } }
 
-.badge {
+.trustBadge {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 0.375rem;
-  background: rgba(0, 0, 0, 0.06);
+  gap: 0.5rem;
+  background: #fff;
   color: #111827;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.3rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
   border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.stars {
+  display: flex;
+  gap: 0.125rem;
+  color: var(--brand-orange);
+  font-size: 0.75rem;
 }
 
 .title {
@@ -65,17 +84,17 @@
   font-weight: 400;
   text-transform: uppercase;
   color: #111827;
-  font-size: 1.75rem;
-  line-height: 1.05;
+  font-size: 2rem;
+  line-height: 1.02;
 }
 
-@media (min-width: 640px) { .title { font-size: 2.25rem; } }
-@media (min-width: 1024px) { .title { font-size: 2.75rem; } }
+@media (min-width: 640px) { .title { font-size: 2.75rem; } }
+@media (min-width: 1024px) { .title { font-size: 3.5rem; } }
 
 .subtitle {
   color: #374151;
   font-size: 0.9375rem;
-  max-width: 26rem;
+  max-width: 24rem;
   line-height: 1.6;
 }
 
@@ -85,37 +104,52 @@
   background: var(--brand-blue);
   color: #fff;
   font-weight: 700;
-  padding: 0.75rem 1.75rem;
-  border-radius: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 0.4rem;
   margin-top: 0.5rem;
   transition: background 0.15s;
 }
 
 .cta:hover { background: #0018b8; }
 
+/* Image bleeds past the slide's own bounds — no frame, no card */
 .imageCol {
   position: relative;
-  height: 12rem;
-  order: 1;
+  height: 16rem;
+  z-index: 1;
 }
 
-@media (min-width: 640px) { .imageCol { height: 16rem; } }
-@media (min-width: 768px) { .imageCol { height: 100%; order: 2; } }
+@media (min-width: 768px) {
+  .imageCol { height: 100%; }
+}
+
+.imageWrap {
+  position: absolute;
+  top: -2%;
+  left: -6%;
+  right: -6%;
+  bottom: -6%;
+}
+
+@media (min-width: 768px) {
+  .imageWrap { top: -8%; left: -4%; right: -8%; bottom: -12%; }
+}
 
 .image {
   object-fit: contain;
-  filter: drop-shadow(0 20px 24px rgba(0, 0, 0, 0.18));
+  object-position: bottom center;
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.18));
 }
 
 /* Navigation arrows */
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   display: flex;
   align-items: center;
@@ -128,8 +162,8 @@
 
 .arrow:hover { background: #fff; }
 
-.arrowLeft { left: 0.75rem; }
-.arrowRight { right: 0.75rem; }
+.arrowLeft { left: 1rem; }
+.arrowRight { right: 1rem; }
 
 /* Progress indicators */
 .indicators {
