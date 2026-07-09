@@ -11,13 +11,21 @@ export const metadata = {
 export default async function ShopPage({ searchParams }) {
   const params = await searchParams;
   const activeCategory = params?.category || "all";
-  const filteredProducts = getProductsByCategory(activeCategory);
+  const searchQuery = params?.q || "";
+  let filteredProducts = getProductsByCategory(activeCategory);
+  if (searchQuery) {
+    filteredProducts = filteredProducts.filter((p) =>
+      p.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
   const activeCategoryName = categories.find((c) => c.id === activeCategory)?.name;
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{activeCategoryName ? activeCategoryName : "Shop All Products"}</h1>
+        <h1 className={styles.title}>
+          {searchQuery ? `Results for "${searchQuery}"` : activeCategoryName || "Shop All Products"}
+        </h1>
         <p className={styles.subtitle}>Everyday low prices on quality essentials, right in your community.</p>
       </div>
 
@@ -43,7 +51,7 @@ export default async function ShopPage({ searchParams }) {
           ))}
         </div>
       ) : (
-        <p className={styles.empty}>No products found in this category yet.</p>
+        <p className={styles.empty}>No products found{searchQuery ? ` for "${searchQuery}"` : ""}.</p>
       )}
     </div>
   );
