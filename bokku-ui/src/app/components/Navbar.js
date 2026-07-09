@@ -4,12 +4,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaBars, FaTimes, FaSearch, FaRegUser, FaRegHeart, FaShoppingBasket } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { itemCount } = useCart();
+  const { user, logout } = useAuth();
   const router = useRouter();
 
   const handleSearch = (e) => {
@@ -62,7 +64,20 @@ export default function Navbar() {
 
         {/* Action Icons Panel */}
         <div className={styles.actions}>
-          <span className={styles.actionIcon} title="Account (coming soon)"><FaRegUser size={20} /></span>
+          {user ? (
+            <button
+              className={styles.actionIcon}
+              onClick={logout}
+              title={`Signed in as ${user.name} — click to sign out`}
+              style={{ background: "none", border: "none", cursor: "pointer" }}
+            >
+              <FaRegUser size={20} />
+            </button>
+          ) : (
+            <Link href="/login" className={styles.actionIcon} title="Sign In">
+              <FaRegUser size={20} />
+            </Link>
+          )}
           <span className={styles.actionIcon} title="Wishlist (coming soon)">
             <FaRegHeart size={20} />
             <span className={styles.badgeOrange}>0</span>
