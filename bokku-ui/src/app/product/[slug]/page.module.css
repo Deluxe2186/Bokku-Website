@@ -1,0 +1,177 @@
+.page {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+@media (min-width: 640px) { .page { padding: 2.5rem 1.5rem; } }
+@media (min-width: 1024px) { .page { padding: 2.5rem 2rem; } }
+
+.breadcrumb {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a { transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--brand-blue); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .layout { grid-template-columns: 1fr 1fr; }
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+@media (min-width: 640px) { .imageWrap { height: 26rem; } }
+
+.image { object-fit: cover; }
+
+.catLabel {
+  font-size: 0.75rem;
+  color: var(--brand-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: #f59e0b;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.ratingVotes { color: #9ca3af; font-size: 0.8125rem; }
+
+.priceGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+}
+
+.beforePrice {
+  font-size: 1rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.description {
+  color: #4b5563;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qtyGroup {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.qtyButton {
+  background: #f9fafb;
+  border: none;
+  width: 2.5rem;
+  height: 2.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.qtyButton:hover { background: #f3f4f6; }
+
+.qtyValue {
+  width: 2.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.addToCartButton {
+  flex-grow: 1;
+  background: var(--brand-orange);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.addToCartButton:hover { background: #ea580c; }
+
+.addedNotice {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--brand-green);
+  font-weight: 600;
+}
+
+.relatedSection {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 2.5rem;
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) { .relatedGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) { .relatedGrid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .relatedGrid { grid-template-columns: repeat(4, 1fr); } }
