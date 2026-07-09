@@ -33,7 +33,7 @@ export default function AboutPage() {
       <div className={styles.hero}>
         <h1 className={styles.heroTitle}>About bokku! Mart</h1>
         <p className={styles.heroText}>
-          Nigeria's hard-discount grocery store, bringing everyday essentials to families without the premium price tag.
+          Nigeria&apos;s hard-discount grocery store, bringing everyday essentials to families without the premium price tag.
         </p>
       </div>
 

@@ -18,7 +18,7 @@ const tabs = [
     id: "partner",
     label: "Partner With Us",
     title: "Become a Bokku Supplier or Partner",
-    text: "We work with local and national suppliers to keep our shelves stocked with quality products at hard-discount prices. If you produce or distribute goods that fit our catalog, we'd love to hear from you.",
+    text: "We work with local and national suppliers to keep our shelves stocked with quality products at hard-discount prices. If you produce or distribute goods that fit our catalog, we&apos;d love to hear from you.",
     points: [
       "Direct supply relationships with a growing retail chain",
       "Reliable, recurring order volumes",
@@ -43,7 +43,7 @@ export default function WorkWithUsPage() {
     <div>
       <div className={styles.hero}>
         <h1 className={styles.heroTitle}>Join the bokku! Family</h1>
-        <p className={styles.heroText}>Whether you want to work with us or supply to us, we'd love to connect.</p>
+        <p className={styles.heroText}>Whether you want to work with us or supply to us, we&apos;d love to connect.</p>
       </div>
 
       <div className={styles.page}>

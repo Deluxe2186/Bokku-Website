@@ -13,7 +13,7 @@ export default function Footer() {
             bokku<span className={styles.brandBang}>!</span><span className={styles.brandMart}>Mart</span>
           </span>
           <p className={styles.blurb}>
-            Nigeria's hard-discount grocery store. High-quality essentials, everyday low prices.
+            Nigeria&apos;s hard-discount grocery store. High-quality essentials, everyday low prices.
           </p>
           <div className={styles.social}>
             <Link href="https://instagram.com/bokkumart"><FaInstagram size={18} /></Link>
