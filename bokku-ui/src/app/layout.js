@@ -2,6 +2,7 @@ import "./globals.css";
 import { Space_Grotesk, Inter, Anton, Baloo_2 } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { CartProvider } from "../context/CartContext";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -36,15 +37,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${anton.variable} ${baloo2.variable}`}>
       <body suppressHydrationWarning>
-        {/* Persistent Layout Infrastructure */}
-        <Navbar />
+        <CartProvider>
+          {/* Persistent Layout Infrastructure */}
+          <Navbar />
 
-        {/* Dynamic Page Content Injector */}
-        <main>
-          {children}
-        </main>
+          {/* Dynamic Page Content Injector */}
+          <main>
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
