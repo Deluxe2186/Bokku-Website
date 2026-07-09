@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 import { formatNaira } from "../../data/products";
 import styles from "./page.module.css";
 
@@ -13,9 +15,17 @@ const paymentMethods = [
 
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCart();
+  const { user, loading } = useAuth();
+  const router = useRouter();
   const [payment, setPayment] = useState("card");
   const [orderPlaced, setOrderPlaced] = useState(false);
   const deliveryFee = items.length > 0 ? 1500 : 0;
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login?redirect=/checkout");
+    }
+  }, [loading, user, router]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +35,10 @@ export default function CheckoutPage() {
     setOrderPlaced(true);
     clearCart();
   };
+
+  if (loading || !user) {
+    return null;
+  }
 
   if (orderPlaced) {
     return (
@@ -54,7 +68,10 @@ export default function CheckoutPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>Checkout</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+        <h1 className={styles.title} style={{ marginBottom: 0 }}>Checkout</h1>
+        <span style={{ fontSize: "0.8125rem", color: "#6b7280" }}>Signed in as {user.email}</span>
+      </div>
 
       <form onSubmit={handleSubmit} className={styles.layout}>
         <div>
@@ -63,7 +80,7 @@ export default function CheckoutPage() {
             <div className={`${styles.fieldGrid} ${styles.two}`}>
               <div className={styles.field}>
                 <label htmlFor="fullName">Full Name</label>
-                <input id="fullName" type="text" required placeholder="Your full name" />
+                <input id="fullName" type="text" required defaultValue={user.name} placeholder="Your full name" />
               </div>
               <div className={styles.field}>
                 <label htmlFor="phone">Phone Number</label>
