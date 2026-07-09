@@ -5,11 +5,10 @@ import Link from "next/link";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import styles from "./HeroSlider.module.css";
 
-// Sample slide dataset. Replace `img` with real transparent PNG product
-// cutouts for the best "pop off the background" effect — object-fit is
-// set to "contain" so transparent PNGs will sit naturally without cropping,
-// and the image wrapper deliberately overflows the slide's own bounds so
-// the product bleeds past the fold instead of sitting boxed in a frame.
+// Sample slide dataset. `img` is now used as a full-bleed background image
+// (object-fit: cover) with a gradient overlay behind the text for legibility.
+// Local files should live in /public/images and be referenced as
+// "/images/your-file.png" (no "../public" prefix).
 const slides = [
   {
     id: 1,
@@ -19,7 +18,7 @@ const slides = [
     ctaLabel: "Shop Now",
     ctaHref: "/shop",
     bgClass: styles.bgSoftBlue,
-    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: 2,
@@ -29,7 +28,7 @@ const slides = [
     ctaLabel: "View Deals",
     ctaHref: "/deals",
     bgClass: styles.bgSoftYellow,
-    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: 3,
@@ -39,7 +38,7 @@ const slides = [
     ctaLabel: "Browse Fresh Produce",
     ctaHref: "/shop?category=fresh-produce",
     bgClass: styles.bgSoftGreen,
-    img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
@@ -72,35 +71,33 @@ export default function HeroSlider() {
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`${styles.slide} ${slide.bgClass} ${index === activeIndex ? styles.slideActive : ""}`}
+          className={`${styles.slide} ${index === activeIndex ? styles.slideActive : ""}`}
         >
-          <div className={styles.inner}>
-            <div className={styles.textCol}>
-              <span className={styles.trustBadge}>
-                <span className={styles.stars}>
-                  <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
-                </span>
-                {slide.tag}
-              </span>
-              <h1 className={styles.title}>{slide.title}</h1>
-              <p className={styles.subtitle}>{slide.subtitle}</p>
-              <Link href={slide.ctaHref} className={styles.cta}>
-                {slide.ctaLabel}
-              </Link>
-            </div>
+          <div className={styles.bgImageWrap}>
+            <Image
+              src={slide.img}
+              alt={slide.title}
+              fill
+              priority={index === 0}
+              className={styles.bgImage}
+              sizes="100vw"
+            />
+          </div>
 
-            <div className={styles.imageCol}>
-              <div className={styles.imageWrap}>
-                <Image
-                  src={slide.img}
-                  alt={slide.title}
-                  fill
-                  priority={index === 0}
-                  className={styles.image}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
+          <div className={`${styles.overlay} ${slide.bgClass}`} />
+
+          <div className={styles.content}>
+            <span className={styles.trustBadge}>
+              <span className={styles.stars}>
+                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+              </span>
+              {slide.tag}
+            </span>
+            <h1 className={styles.title}>{slide.title}</h1>
+            <p className={styles.subtitle}>{slide.subtitle}</p>
+            <Link href={slide.ctaHref} className={styles.cta}>
+              {slide.ctaLabel}
+            </Link>
           </div>
         </div>
       ))}
