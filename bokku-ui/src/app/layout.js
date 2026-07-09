@@ -23,15 +23,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body className="antialiased bg-[#FAF8F3] text-[#1A1A1A] min-h-screen flex flex-col font-body">
+      <body>
         {/* Persistent Layout Infrastructure */}
         <Navbar />
-        
+
         {/* Dynamic Page Content Injector */}
-        <main className="flex-grow">
+        <main>
           {children}
         </main>
-        
+
         <Footer />
       </body>
     </html>
