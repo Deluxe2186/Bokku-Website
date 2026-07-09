@@ -19,7 +19,7 @@ const slides = [
     ctaLabel: "Shop Now",
     ctaHref: "/shop",
     bgClass: styles.bgSoftBlue,
-    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop",
+    img: "/images/fresh-produce-ecofriendly-bag-vibrant-vegetables-herbs.png",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const slides = [
     ctaLabel: "View Deals",
     ctaHref: "/deals",
     bgClass: styles.bgSoftYellow,
-    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
+    img: "/images/pngegg.png",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const slides = [
     ctaLabel: "Browse Fresh Produce",
     ctaHref: "/shop?category=fresh-produce",
     bgClass: styles.bgSoftGreen,
-    img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=800&auto=format&fit=crop",
+    img: "/images/chicken-on-egg.png",
   },
 ];
 
