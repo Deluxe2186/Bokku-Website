@@ -2,10 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes, FaSearch, FaRegUser, FaRegHeart, FaShoppingBasket } from "react-icons/fa";
+import { useCart } from "../../context/CartContext";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { itemCount } = useCart();
 
   return (
     <nav className={styles.nav}>
@@ -53,7 +55,7 @@ export default function Navbar() {
           </Link>
           <Link href="/cart" className={styles.actionIcon}>
             <FaShoppingBasket size={22} />
-            <span className={styles.badgeBlue}>2</span>
+            <span className={styles.badgeBlue}>{itemCount}</span>
           </Link>
 
           {/* Mobile Menu Open Toggle */}
