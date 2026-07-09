@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaBars, FaTimes, FaSearch, FaRegUser, FaRegHeart, FaShoppingBasket } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
@@ -7,7 +8,17 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const { itemCount } = useCart();
+  const router = useRouter();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      router.push(`/shop?q=${encodeURIComponent(searchTerm.trim())}`);
+      setIsOpen(false);
+    }
+  };
 
   return (
     <nav className={styles.nav}>
@@ -16,8 +27,8 @@ export default function Navbar() {
       <div className={styles.announcementBar}>
         <div>Get Up to 70% Discount Everyday on Household Essentials!</div>
         <div className={styles.announcementLinks}>
-          <Link href="/track">Track Your Order</Link>
-          <Link href="/help">Help & Contact</Link>
+          <Link href="/work-with-us">Work With Us</Link>
+          <Link href="/locations">Locations</Link>
         </div>
       </div>
 
@@ -29,30 +40,33 @@ export default function Navbar() {
         </Link>
 
         {/* E-Commerce Search Bar (Desktop) */}
-        <div className={styles.searchBar}>
+        <form className={styles.searchBar} onSubmit={handleSearch}>
           <select className={styles.searchSelect}>
             <option>All Categories</option>
-            <option>Bokku Bread</option>
-            <option>Groceries</option>
+            <option>Bakery</option>
+            <option>Fresh Produce</option>
             <option>Household</option>
+            <option>Health & Beauty</option>
           </select>
           <input
             type="text"
             placeholder="Search by Title, Brand, Categories..."
             className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className={styles.searchButton}>
+          <button type="submit" className={styles.searchButton}>
             <FaSearch />
           </button>
-        </div>
+        </form>
 
         {/* Action Icons Panel */}
         <div className={styles.actions}>
-          <Link href="/account" className={styles.actionIcon}><FaRegUser size={20} /></Link>
-          <Link href="/wishlist" className={styles.actionIcon}>
+          <span className={styles.actionIcon} title="Account (coming soon)"><FaRegUser size={20} /></span>
+          <span className={styles.actionIcon} title="Wishlist (coming soon)">
             <FaRegHeart size={20} />
             <span className={styles.badgeOrange}>0</span>
-          </Link>
+          </span>
           <Link href="/cart" className={styles.actionIcon}>
             <FaShoppingBasket size={22} />
             <span className={styles.badgeBlue}>{itemCount}</span>
@@ -68,26 +82,36 @@ export default function Navbar() {
       {/* LAYER 3: SUB-NAVIGATION BAR (Desktop) */}
       <div className={styles.subNav}>
         <div className={styles.subNavInner}>
-          <Link href="/categories" className={styles.subNavAll}>☰ All Categories</Link>
-          <Link href="/">Fresh Produce</Link>
-          <Link href="/">Bokku Bakery</Link>
-          <Link href="/">Household</Link>
-          <Link href="/">Health & Beauty</Link>
+          <Link href="/shop" className={styles.subNavAll}>☰ All Categories</Link>
+          <Link href="/shop?category=fresh-produce">Fresh Produce</Link>
+          <Link href="/shop?category=bakery">Bokku Bakery</Link>
+          <Link href="/shop?category=household">Household</Link>
+          <Link href="/shop?category=health-beauty">Health & Beauty</Link>
+          <Link href="/deals">Deals</Link>
+          <Link href="/about">About Us</Link>
         </div>
       </div>
 
       {/* Mobile Drawer Navigation */}
       {isOpen && (
         <div className={styles.mobileDrawer}>
-          <div className={styles.mobileSearch}>
-            <input type="text" placeholder="Search..." />
-            <button><FaSearch size={14} /></button>
-          </div>
-          <Link href="/" className={styles.mobileLink}>Home</Link>
-          <Link href="/" className={styles.mobileLink}>Fresh Produce</Link>
-          <Link href="/" className={styles.mobileLink}>Bokku Bakery</Link>
-          <Link href="/" className={styles.mobileLink}>Household</Link>
-          <Link href="/" className={styles.mobileLink}>Health & Beauty</Link>
+          <form className={styles.mobileSearch} onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button type="submit"><FaSearch size={14} /></button>
+          </form>
+          <Link href="/" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Home</Link>
+          <Link href="/shop?category=fresh-produce" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Fresh Produce</Link>
+          <Link href="/shop?category=bakery" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Bokku Bakery</Link>
+          <Link href="/shop?category=household" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Household</Link>
+          <Link href="/shop?category=health-beauty" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Health & Beauty</Link>
+          <Link href="/deals" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Deals</Link>
+          <Link href="/locations" className={styles.mobileLink} onClick={() => setIsOpen(false)}>Locations</Link>
+          <Link href="/about" className={styles.mobileLink} onClick={() => setIsOpen(false)}>About Us</Link>
         </div>
       )}
     </nav>
