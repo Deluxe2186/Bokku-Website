@@ -27,19 +27,22 @@ export default function Footer() {
         <div>
           <h4 className={styles.heading}>Shop</h4>
           <ul className={styles.linkList}>
-            <li><Link href="/">Fresh Produce</Link></li>
-            <li><Link href="/">Bokku Bakery</Link></li>
-            <li><Link href="/">Household</Link></li>
-            <li><Link href="/">Health & Beauty</Link></li>
+            <li><Link href="/shop">All Products</Link></li>
+            <li><Link href="/shop?category=fresh-produce">Fresh Produce</Link></li>
+            <li><Link href="/shop?category=bakery">Bokku Bakery</Link></li>
+            <li><Link href="/shop?category=household">Household</Link></li>
+            <li><Link href="/shop?category=health-beauty">Health & Beauty</Link></li>
+            <li><Link href="/deals">Deals</Link></li>
           </ul>
         </div>
 
-        {/* Support links */}
+        {/* Company links */}
         <div>
-          <h4 className={styles.heading}>Support</h4>
+          <h4 className={styles.heading}>Company</h4>
           <ul className={styles.linkList}>
-            <li><Link href="/track">Track Your Order</Link></li>
-            <li><Link href="/help">Help & Contact</Link></li>
+            <li><Link href="/about">About Us</Link></li>
+            <li><Link href="/work-with-us">Work With Us</Link></li>
+            <li><Link href="/work-with-us">Partner With Us</Link></li>
             <li><Link href="/locations">Find a Store</Link></li>
           </ul>
         </div>
