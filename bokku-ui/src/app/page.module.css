@@ -3,16 +3,6 @@
   background: var(--background);
 }
 
-/* HERO SLIDER WRAPPER */
-.heroSection {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 0;
-}
-
-@media (min-width: 640px) { .heroSection { padding: 2rem 1.5rem 0; } }
-@media (min-width: 1024px) { .heroSection { padding: 2rem 2rem 0; } }
-
 /* SECTION shared */
 .section {
   max-width: 80rem;

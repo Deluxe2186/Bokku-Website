@@ -18,10 +18,8 @@ export default function Home() {
   return (
     <div className={styles.page}>
 
-      {/* HERO SLIDER */}
-      <section className={styles.heroSection}>
-        <HeroSlider />
-      </section>
+      {/* HERO SLIDER — full-bleed, no boxed wrapper */}
+      <HeroSlider />
 
       {/* CATEGORIES SECTION */}
       <section className={styles.section}>
