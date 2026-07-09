@@ -65,17 +65,18 @@
 }
 
 .heroTitle {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 2.5rem;
   color: #111827;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
-@media (min-width: 640px) { .heroTitle { font-size: 3rem; } }
-@media (min-width: 1024px) { .heroTitle { font-size: 3.75rem; } }
+@media (min-width: 640px) { .heroTitle { font-size: 3.25rem; } }
+@media (min-width: 1024px) { .heroTitle { font-size: 4rem; } }
 
 .heroTitleAccent { color: var(--brand-blue); }
 
@@ -123,11 +124,10 @@
   top: 1rem;
   right: 1rem;
   transform: rotate(-6deg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  background: var(--brand-blue);
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
+  background: var(--brand-red);
+  color: var(--brand-yellow);
+  font-family: var(--font-heading);
+  font-weight: 400;
   border-radius: 9999px;
   width: 5rem;
   height: 5rem;
@@ -137,7 +137,7 @@
   justify-content: center;
   text-align: center;
   line-height: 1;
-  border: 4px solid #fff;
+  border: 4px solid var(--brand-black-banner);
 }
 
 @media (min-width: 640px) {
@@ -200,12 +200,11 @@
   text-align: center;
   gap: 0.75rem;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: border-color 0.15s;
 }
 
 .categoryCard:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  border-color: var(--brand-blue);
 }
 
 .categoryIcon {
@@ -291,10 +290,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: box-shadow 0.2s;
+  transition: border-color 0.15s;
 }
 
-.productCard:hover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06); }
+.productCard:hover { border-color: var(--brand-blue); }
 
 .productImageWrap {
   width: 100%;
@@ -308,10 +307,7 @@
 
 .productImage {
   object-fit: cover;
-  transition: transform 0.3s;
 }
-
-.productCard:hover .productImage { transform: scale(1.05); }
 
 .productCat {
   font-size: 0.6875rem;

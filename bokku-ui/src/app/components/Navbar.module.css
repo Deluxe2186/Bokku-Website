@@ -1,12 +1,10 @@
 .nav {
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(6px);
+  background: #fff;
   border-bottom: 1px solid #f3f4f6;
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* LAYER 1: announcement bar */
@@ -62,11 +60,11 @@
 }
 
 .brand {
-  font-family: var(--font-display);
+  font-family: var(--font-brand);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--brand-blue);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   flex-shrink: 0;
 }
 
@@ -210,7 +208,6 @@
   border-top: 1px solid #f3f4f6;
   padding: 1rem;
   font-weight: 500;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 @media (min-width: 768px) {

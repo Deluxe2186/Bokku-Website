@@ -1,9 +1,13 @@
 :root {
   --background: #FAF8F3;
   --foreground: #1A1A1A;
-  --brand-blue: #001DDD;
+  --brand-blue: #0018E0;
   --brand-orange: #F97316;
   --brand-green: #1F9D55;
+  --brand-yellow: #FFDE00;
+  --brand-red: #E31E24;
+  --brand-black-banner: #111111;
+  --brand-lightblue: #DCEEFF;
 }
 
 * {
