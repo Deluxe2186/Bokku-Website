@@ -1,0 +1,118 @@
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaChevronLeft, FaChevronRight, FaFire } from "react-icons/fa";
+import styles from "./HeroSlider.module.css";
+
+// Sample slide dataset. Replace `img` with real transparent PNG product
+// cutouts for the best "pop off the background" effect — object-fit is
+// set to "contain" so transparent PNGs will sit naturally without cropping.
+const slides = [
+  {
+    id: 1,
+    tag: "Everyday Low Prices",
+    title: "We Bring the Store To Your Door.",
+    subtitle: "Get the best and freshest groceries delivered at hard-discount pricing, every single day.",
+    ctaLabel: "Shop Now",
+    ctaHref: "/shop",
+    bgClass: styles.bgSoftBlue,
+    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    tag: "This Week's Deal",
+    title: "Up To 70% Off Household Essentials.",
+    subtitle: "From cooking oil to rice, stock up on staples without stretching your budget.",
+    ctaLabel: "View Deals",
+    ctaHref: "/deals",
+    bgClass: styles.bgSoftYellow,
+    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=600&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    tag: "Fresh Daily",
+    title: "Farm-Fresh Produce, Always in Stock.",
+    subtitle: "Sourced fresh from local farms and delivered straight to your nearest bokku! store.",
+    ctaLabel: "Browse Fresh Produce",
+    ctaHref: "/shop?category=fresh-produce",
+    bgClass: styles.bgSoftGreen,
+    img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=600&auto=format&fit=crop",
+  },
+];
+
+export default function HeroSlider() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    if (isHovering) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isHovering]);
+
+  const goToPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  return (
+    <div
+      className={styles.slider}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      {slides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`${styles.slide} ${slide.bgClass} ${index === activeIndex ? styles.slideActive : ""}`}
+        >
+          <div className={styles.textCol}>
+            <span className={styles.badge}>
+              <FaFire size={12} /> {slide.tag}
+            </span>
+            <h1 className={styles.title}>{slide.title}</h1>
+            <p className={styles.subtitle}>{slide.subtitle}</p>
+            <Link href={slide.ctaHref} className={styles.cta}>
+              {slide.ctaLabel}
+            </Link>
+          </div>
+
+          <div className={styles.imageCol}>
+            <Image
+              src={slide.img}
+              alt={slide.title}
+              fill
+              priority={index === 0}
+              className={styles.image}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      ))}
+
+      <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={goToPrev} aria-label="Previous slide">
+        <FaChevronLeft size={16} />
+      </button>
+      <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={goToNext} aria-label="Next slide">
+        <FaChevronRight size={16} />
+      </button>
+
+      <div className={styles.indicators}>
+        {slides.map((slide, index) => (
+          <button
+            key={slide.id}
+            className={`${styles.indicator} ${index === activeIndex ? styles.indicatorActive : ""}`}
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
