@@ -29,7 +29,7 @@
 }
 
 .bgImage {
-  object-fit: cover;
+  object-fit:cover;
 }
 
 /* Unique overlay tint per slide, layered over the image for text legibility */

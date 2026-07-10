@@ -28,7 +28,7 @@ const slides = [
     ctaLabel: "View Deals",
     ctaHref: "/deals",
     bgClass: styles.bgSoftYellow,
-    img: "https://images.unsplash.com/photo-1581264669997-3f222f331aaa?q=80&w=1600&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const slides = [
     ctaLabel: "Browse Fresh Produce",
     ctaHref: "/shop?category=fresh-produce",
     bgClass: styles.bgSoftGreen,
-    img: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=1600&auto=format&fit=crop",
+    img: "/images/engin-akyurt-dBFSlJ3wWRY-unsplash.jpg",
   },
 ];
 
