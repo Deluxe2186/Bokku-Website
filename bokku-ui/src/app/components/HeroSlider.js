@@ -38,7 +38,7 @@ const slides = [
     ctaLabel: "Browse Fresh Produce",
     ctaHref: "/shop?category=fresh-produce",
     bgClass: styles.bgSoftGreen,
-    img: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=800&auto=format&fit=crop",
+    img: "/images/engin-akyurt-dBFSlJ3wWRY-unsplash.jpg",
   },
 ];
 
