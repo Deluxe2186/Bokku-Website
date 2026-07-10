@@ -5,8 +5,8 @@
   min-height: 24rem;
 }
 
-@media (min-width: 768px) { .slider { min-height: 30rem; } }
-@media (min-width: 1024px) { .slider { min-height: 38rem; } }
+@media (min-width: 768px) { .slider { min-height: 32rem; } }
+@media (min-width: 1024px) { .slider { min-height: 40rem; } }
 
 .slide {
   position: absolute;
@@ -49,12 +49,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 2rem 1.5rem;
 }
 
-@media (min-width: 768px) { .content { padding: 0 2rem 0 3rem; max-width: 32rem; } }
-@media (min-width: 1024px) { .content { padding: 0 2rem 0 4rem; } }
+@media (min-width: 768px) { .content { padding: 0 2rem 0 3rem; max-width: 38rem; } }
+@media (min-width: 1024px) { .content { padding: 0 2rem 0 4rem; max-width: 42rem; } }
 
 .trustBadge {
   display: inline-flex;
@@ -63,9 +63,9 @@
   gap: 0.5rem;
   background: #fff;
   color: #111827;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 9999px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -74,7 +74,7 @@
   display: flex;
   gap: 0.125rem;
   color: var(--brand-orange);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .title {
@@ -82,20 +82,22 @@
   font-weight: 400;
   text-transform: uppercase;
   color: #fff;
-  font-size: 2rem;
-  line-height: 1.02;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  font-size: 2.5rem;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 640px) { .title { font-size: 2.5rem; } }
-@media (min-width: 1024px) { .title { font-size: 3rem; } }
+@media (min-width: 640px) { .title { font-size: 3.25rem; } }
+@media (min-width: 1024px) { .title { font-size: 4rem; } }
 
 .subtitle {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 0.9375rem;
-  max-width: 24rem;
+  font-size: 1.0625rem;
+  max-width: 30rem;
   line-height: 1.6;
 }
+
+@media (min-width: 1024px) { .subtitle { font-size: 1.125rem; } }
 
 .cta {
   display: inline-block;
@@ -103,7 +105,8 @@
   background: var(--brand-blue);
   color: #fff;
   font-weight: 700;
-  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  padding: 1rem 2.25rem;
   border-radius: 0.4rem;
   margin-top: 0.5rem;
   transition: background 0.15s;
