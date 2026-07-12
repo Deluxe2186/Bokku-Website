@@ -1,0 +1,97 @@
+.hero {
+  background: #f5f7fa;
+  padding: 3.5rem 1rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) { .hero { padding: 4.5rem 1.5rem; } }
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+@media (min-width: 640px) { .heroTitle { font-size: 2.5rem; } }
+
+.heroText {
+  color: #6b7280;
+  max-width: 36rem;
+  margin: 0.75rem auto 0;
+  font-size: 0.9375rem;
+}
+
+.page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) { .page { padding: 3rem 1.5rem; } }
+
+.section { margin-bottom: 3rem; }
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.sectionText {
+  color: #4b5563;
+  line-height: 1.7;
+  font-size: 0.9375rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) { .valuesGrid { grid-template-columns: repeat(3, 1fr); } }
+
+.valueCard {
+  background: #fff;
+  border: 1px solid #f3f4f6;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.valueTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: 0.5rem;
+}
+
+.valueText {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) { .statsRow { grid-template-columns: repeat(4, 1fr); } }
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--brand-blue);
+  font-size: 2rem;
+}
+
+.statLabel {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
