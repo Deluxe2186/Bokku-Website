@@ -28,7 +28,7 @@ const slides = [
     ctaLabel: "View Deals",
     ctaHref: "/deals",
     bgClass: styles.bgSoftYellow,
-    img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1584680226833-0d680d0a0794?q=80&w=1170&auto=format&fit=crop",
   },
   {
     id: 3,
