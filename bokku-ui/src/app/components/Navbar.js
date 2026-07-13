@@ -71,25 +71,25 @@ export default function Navbar() {
               title={`Signed in as ${user.name} — click to sign out`}
               style={{ background: "none", border: "none", cursor: "pointer" }}
             >
-              <FaRegUser size={20} />
+              <FaRegUser size={23} />
             </button>
           ) : (
             <Link href="/login" className={styles.actionIcon} title="Sign In">
-              <FaRegUser size={20} />
+              <FaRegUser size={23} />
             </Link>
           )}
           <span className={styles.actionIcon} title="Wishlist (coming soon)">
-            <FaRegHeart size={20} />
+            <FaRegHeart size={23} />
             <span className={styles.badgeOrange}>0</span>
           </span>
           <Link href="/cart" className={styles.actionIcon}>
-            <FaShoppingBasket size={22} />
+            <FaShoppingBasket size={25} />
             <span className={styles.badgeBlue}>{itemCount}</span>
           </Link>
 
           {/* Mobile Menu Open Toggle */}
           <button onClick={() => setIsOpen(!isOpen)} className={styles.menuToggle}>
-            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            {isOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
           </button>
         </div>
       </div>
